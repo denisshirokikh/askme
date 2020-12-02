@@ -12,13 +12,15 @@ class User < ActiveRecord::Base
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
   validates :email,
-            format: { with: /\A(.+)@(.+)\z/, message: "Email invalid"  },
+            format: { with: /\A(.+)@(.+)\z/, message: "Invalid"  },
             uniqueness: { case_sensitive: false }
   validates :username,
-            format: { with: /\A[a-z0-9_]{4,40}\z/, message: "Username invalid"  },
+            format: { with: /\A[a-z0-9_]{4,40}\z/, message: "Invalid"  },
             uniqueness: { case_sensitive: false }
   validates :password, presence: true, on: :create
   validates_confirmation_of :password
+
+  before_validation :string_downcase
   before_save :encrypt_password
 
   def encrypt_password
@@ -50,6 +52,11 @@ class User < ActiveRecord::Base
 
     return user if user.password_hash == hashed_password
     nil
+  end
+
+  def string_downcase
+    email&.downcase!
+    username&.downcase!
   end
 end
 
