@@ -8,4 +8,15 @@ module ApplicationHelper
       asset_path 'logo.png'
     end
   end
+
+  def word_inclination(number, one, few, many)
+    special_case_number = number % 100
+    case_last_number = number % 10
+    if [0, 5, 6, 7, 8, 9].include?(case_last_number) ||
+      (11..14).include?(special_case_number)
+      return many
+    end
+    return few if [2,3,4].include?(case_last_number)
+    return one
+  end
 end
