@@ -33,6 +33,9 @@ class UsersController < ApplicationController
       )
     ]
     @questions_count = @questions.size
+    @pending = @questions.map(&:answer).count(nil)
+    @answered = @questions_count - @pending
+
 
     @new_question = Question.new
   end
