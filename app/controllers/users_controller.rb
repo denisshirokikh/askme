@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
 
   before_action :load_user, except: [:index, :create, :new]
+  before_action :authorize_user, except: [:index, :new, :create, :show]
+
 
   def index
     @users = User.all
   end
 
   def new
+    redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
     @user = User.new
   end
 
   def create
+    redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
     @user = User.new(user_params)
 
     if @user.save
@@ -52,5 +56,9 @@ class UsersController < ApplicationController
 
   def load_user
     @user ||= User.find params[:id]
+  end
+
+  def authorize_user
+    reject_user unless @user == current_user
   end
 end
