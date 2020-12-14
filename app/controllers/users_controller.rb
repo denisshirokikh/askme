@@ -40,9 +40,9 @@ class UsersController < ApplicationController
   def show
     @questions = @user.questions.order(created_at: :desc)
 
-    # @questions_count = @questions.size
-    # @pending = @questions.map(&:answer).count(nil)
-    # @answered = @questions_count - @pending
+    @questions_count = @questions.size
+    @pending = @questions.map(&:answer).count(nil)
+    @answered = @questions_count - @pending
 
 
     @new_question = @user.questions.build
