@@ -19,4 +19,8 @@ module ApplicationHelper
     return few if [2,3,4].include?(case_last_number)
     return one
   end
+
+  def fa_icon(icon_class)
+    content_tag 'span', '', class: "fa fa-#{icon_class}"
+  end
 end
