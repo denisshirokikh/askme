@@ -5,7 +5,7 @@ module ApplicationHelper
     if user.avatar_url.present?
       user.avatar_url
     else
-      asset_path 'logo.png'
+      asset_pack_path 'media/images/logo.png'
     end
   end
 

@@ -172,7 +172,7 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   uglifier
   web-console (>= 3.3.0)
-  webpacker (~> 5.x)
+  webpacker
 
 RUBY VERSION
    ruby 2.7.2p137
