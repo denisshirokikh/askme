@@ -49,6 +49,12 @@ class UsersController < ApplicationController
     @new_question = @user.questions.build
   end
 
+  def destroy
+    @user.destroy
+    flash[:success] = "Пользователь удалён!"
+    redirect_to root_path
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation,

@@ -51,6 +51,13 @@
     <div class="form-action buffer-top">
       <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
     </div>
+
+    <div class="form-action buffer-top">
+      <div class="button button-delete">
+        <%= link_to 'Удалить профиль', @user, method: :delete,
+                    data: { confirm: "Че серьезно?" } if current_user == @user %>
+      </div>
+    </div
     <% end %>
   </div>
 </div>
