@@ -23,4 +23,12 @@ module ApplicationHelper
   def fa_icon(icon_class)
     content_tag 'span', '', class: "fa fa-#{icon_class}"
   end
+
+  def author_question(author)
+    if author.present?
+      link_to "@#{author.username}", user_path(author)
+    else
+      'Автор вопроса не известен'
+    end
+  end
 end

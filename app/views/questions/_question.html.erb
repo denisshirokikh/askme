@@ -7,6 +7,14 @@
       <%= question.text %>
     </div>
 
+    <div class="question-date">
+      <% if question.author.present? %>
+        автор <%= link_to "@#{question.author.username}", user_path(question.author) %>
+      <% else %>
+        Автор вопроса не известен
+      <% end %>
+    </div>
+
     <% if question.answer.present? %>
       <div class="question-answer text-lead">
         <%= question.answer %>

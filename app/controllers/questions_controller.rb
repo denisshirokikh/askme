@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   def create
     @question = Question.new(question_params)
+    @question.author_id = current_user.id if current_user.present?
 
     if @question.save
       # После сохранения вопроса редиректим на пользователя
