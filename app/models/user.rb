@@ -5,6 +5,7 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   VALID_EMAIL = /\A\w+@\w+\.\w+\z/i
   VALID_USERNAME = /\A\w+\z/i
+  COLOR_REGEXP = /\A#\h{3}{1,2}\z/
 
   attr_accessor :password
 
@@ -20,6 +21,7 @@ class User < ApplicationRecord
             format: { with: VALID_USERNAME },
             length: {maximum: 40}
   validates :password, presence: true, confirmation: true, on: :create
+  validates :profile_color, format: { with: COLOR_REGEXP }
 
   def self.hash_to_string(password_hash)
     password_hash.unpack('H*')[0]
