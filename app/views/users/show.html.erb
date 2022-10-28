@@ -25,13 +25,16 @@
 <div class="user-details">
   <div class="user-statistics container text-center">
       <div class="counter text-small">
-        <h2>вопросы</h2>
+        <h2>Bопросы</h2>
+        <p>Bсего:</p>
         <h1 class="title-small buffer-both title-small"><%= @questions_count %></h1>
-        <p>всего <%= word_inclination(@questions_count, 'вопрос', 'вопроса', 'вопросов') %></p>
+        <p><%= word_inclination(@questions_count, 'вопрос', 'вопроса', 'вопросов') %></p>
+        <p>C ответом:</p>
         <h1 class="title-small buffer-both"><%= @answered %></h1>
-        <p>с ответом <%= word_inclination(@answered, 'вопрос', 'вопроса', 'вопросов') %></p>
+        <p> <%= word_inclination(@answered, 'вопрос', 'вопроса', 'вопросов') %></p>
+        <p>Без ответа:</p>
         <h1 class="title-small buffer-both"><%= @pending %></h1>
-        <p>без ответа <%= word_inclination(@pending, 'вопрос', 'вопроса', 'вопросов') %></p>
+        <p><%= word_inclination(@pending, 'вопрос', 'вопроса', 'вопросов') %></p>
       </div>
   </div>
 </div>
