@@ -20,6 +20,7 @@
     "webpack-dev-server": "^3"
   },
   "scripts": {
-    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map"
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss ./app/assets/builds/application.css --no-source-map",
+    "postinstall": "npm rebuild node-sass"
   }
 }
